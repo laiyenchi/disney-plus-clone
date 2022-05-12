@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import HomeSlider from "./HomeSlider";
+import HomeViewer from "./HomeViewer";
 
 function Home() {
   return (
     <Main>
       <HomeSlider />
+      <HomeViewer />
     </Main>
   );
 }
