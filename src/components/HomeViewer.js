@@ -4,21 +4,21 @@ import styled from "styled-components";
 function HomeViewer() {
   return (
     <Container>
-      <Wraper>
+      <Wrapper>
         <img src="images/viewers-disney.png" />
-      </Wraper>
-      <Wraper>
+      </Wrapper>
+      <Wrapper>
         <img src="images/viewers-pixar.png" />
-      </Wraper>
-      <Wraper>
+      </Wrapper>
+      <Wrapper>
         <img src="images/viewers-marvel.png" />
-      </Wraper>
-      <Wraper>
+      </Wrapper>
+      <Wrapper>
         <img src="images/viewers-starwars.png" />
-      </Wraper>
-      <Wraper>
+      </Wrapper>
+      <Wrapper>
         <img src="images/viewers-national.png" />
-      </Wraper>
+      </Wrapper>
     </Container>
   );
 }
@@ -34,7 +34,7 @@ const Container = styled.div`
   justify-content: space-between;
 `;
 
-const Wraper = styled.div`
+const Wrapper = styled.div`
   width: 200px;
   height: 100px;
   border: solid 3px rgb(249, 249, 249, 0.5);

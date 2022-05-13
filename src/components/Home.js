@@ -2,12 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import HomeSlider from "./HomeSlider";
 import HomeViewer from "./HomeViewer";
-
+import HomeMovie from "./HomeMovie";
 function Home() {
   return (
     <Main>
       <HomeSlider />
       <HomeViewer />
+      <HomeMovie />
     </Main>
   );
 }
@@ -19,6 +20,7 @@ const Main = styled.main`
   padding: 0 calc(3.5vw + 5px);
   position: relative;
   overflow-x: hidden;
+  overflow-y: hidden;
 
   &:before {
     content: "";
