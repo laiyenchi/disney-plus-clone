@@ -156,5 +156,6 @@ const Description = styled.div`
   p {
     font-size: 25px;
     color: rgb(255, 255, 255);
+    max-width: 850px;
   }
 `;
