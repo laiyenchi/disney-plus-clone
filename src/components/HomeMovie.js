@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { selectMovies } from "../features/movie/movieSlice";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 function HomeMovie() {
   const movies = useSelector(selectMovies);
 
@@ -12,51 +13,11 @@ function HomeMovie() {
         {movies &&
           movies.map((movie) => (
             <Movies key={movie.id}>
-              <img src={movie.cardImg} />
+              <Link to={`/Detail/${movie.id}`}>
+                <img src={movie.cardImg} />
+              </Link>
             </Movies>
           ))}
-        {/* <Movies>
-          <img src="images/viewers-disney.png" />
-        </Movies>
-        <Movies>
-          <img src="images/viewers-disney.png" />
-        </Movies>
-        <Movies>
-          <img src="images/viewers-disney.png" />
-        </Movies>
-        <Movies>
-          <img src="images/viewers-disney.png" />
-        </Movies>
-      </Wrapper>
-      <h3>New to Disney+</h3>
-      <Wrapper>
-        <Movies>
-          <img src="images/viewers-disney.png" />
-        </Movies>
-        <Movies>
-          <img src="images/viewers-disney.png" />
-        </Movies>
-        <Movies>
-          <img src="images/viewers-disney.png" />
-        </Movies>
-        <Movies>
-          <img src="images/viewers-disney.png" />
-        </Movies>
-      </Wrapper>
-      <h3>Originals</h3>
-      <Wrapper>
-        <Movies>
-          <img src="images/viewers-disney.png" />
-        </Movies>
-        <Movies>
-          <img src="images/viewers-disney.png" />
-        </Movies>
-        <Movies>
-          <img src="images/viewers-disney.png" />
-        </Movies>
-        <Movies>
-          <img src="images/viewers-disney.png" />
-        </Movies> */}
       </Wrapper>
     </Container>
   );

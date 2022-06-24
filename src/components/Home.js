@@ -14,10 +14,24 @@ function Home() {
       let tempMovies = snapshot.docs.map((doc) => {
         return { id: doc.id, ...doc.data() };
       });
-      tempMovies = [
-        { id: 1, name: "aaa", cardImg: "images/viewers-disney.png" },
-        { id: 2, name: "bbb", cardImg: "images/viewers-disney.png" },
-      ];
+      // tempMovies = [
+      //   {
+      //     id: 1,
+      //     cardImg: "images/viewers-disney.png",
+      //     backgroundImg: "",
+      //     description: "",
+      //     subTitle: "",
+      //     title: "",
+      //   },
+      //   {
+      //     id: 2,
+      //     cardImg: "images/viewers-disney.png",
+      //     backgroundImg: "",
+      //     description: "",
+      //     subTitle: "",
+      //     title: "",
+      //   },
+      // ];
       console.log(tempMovies);
       dispatch(setMovies(tempMovies));
     });
@@ -42,7 +56,7 @@ const Main = styled.main`
 
   &:before {
     content: "";
-    background: url("images/home-background.png") center center / cover fixed
+    background: url("/images/home-background.png") center center / cover fixed
       no-repeat;
     position: absolute;
     top: 0;

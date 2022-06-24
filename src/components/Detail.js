@@ -1,40 +1,71 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-
+import { useParams } from "react-router-dom";
+import db from "../firebase";
+import parse from "html-react-parser";
 function Detail() {
+  // const [detail, setDetail] = useState({
+  //   backgroundImg: "",
+  //   cardImg: "",
+  //   description: "",
+  //   subTitle: "",
+  //   title: "",
+  // });
+  const [detail, setDetail] = useState();
+  const params = useParams();
+  console.log("This is id: ", params, params.id);
+  //parser for rendering html string
+  const parse = require("html-react-parser");
+  //get document data from firebase cloud firestore
+  useEffect(() => {
+    db.collection("movies")
+      .doc(params.id)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          console.log("Document data:", doc.data());
+          setDetail(doc.data());
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting document:", error);
+      });
+  }, []);
+
   return (
     <Container>
-      <BackgroundImage>
-        <img src="images/turning_red.jpg" />
-      </BackgroundImage>
-      <ImageTitle>
-        <img src="images/turning_red_logo.png" />
-      </ImageTitle>
-      <Controls>
-        <Play>
-          <img src="images/play-icon-black.png" />
-          <span>PLAY</span>
-        </Play>
-        <Trailer>
-          <img src="images/play-icon-white.png" />
-          <span>TRAILER</span>
-        </Trailer>
-        <Buttons>
-          <AddFavorite>
-            <span>+</span>
-          </AddFavorite>
-          <Share>
-            <img src="images/group-icon.png" />
-          </Share>
-        </Buttons>
-      </Controls>
-      <Description>
-        <p>Growing up is a beast.</p>
-        <p>
-          Disney and Pixar’s Turning Red is now streaming on Disney+, and
-          available on Digital, DVD and Blu-ray.
-        </p>
-      </Description>
+      {detail && (
+        <>
+          <BackgroundImage>
+            <img src={detail.backgroundImg} />
+          </BackgroundImage>
+          <ImageTitle>
+            <img src={detail.cardImg} />
+          </ImageTitle>
+          <Controls>
+            <Play>
+              <img src="/images/play-icon-black.png" />
+              <span>PLAY</span>
+            </Play>
+            <Trailer>
+              <img src="/images/play-icon-white.png" />
+              <span>TRAILER</span>
+            </Trailer>
+            <Buttons>
+              <AddFavorite>
+                <span>+</span>
+              </AddFavorite>
+              <Share>
+                <img src="/images/group-icon.png" />
+              </Share>
+            </Buttons>
+          </Controls>
+          <Description>{parse(detail.description)}</Description>
+        </>
+      )}
     </Container>
   );
 }
